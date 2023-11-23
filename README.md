@@ -1,8 +1,10 @@
 # Galaxy Defiance
 
-This is my personal repo as I follow the Heartbeast tutorial for Galaxy Defiance
-I am in no way associated with Heartbeast
-View his tutorial online:
+This is my personal repo as I follow the Heartbeast tutorial for Galaxy Defiance.
+
+I am in no way associated with Heartbeast.
+
+View the Heartbeast tutorial online:
 	https://www.youtube.com/watch?v=zUeLesdL7lE
 
 The sound effects were made by Heartbeast and are under a CCO license.
