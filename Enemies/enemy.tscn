@@ -15,16 +15,20 @@ script = ExtResource("1_byxdk")
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("1_30xsv")
 
-[node name="MoveComponent" type="Node" parent="."]
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_nwkob")
+actor = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="ScaleComponent" type="Node" parent="."]
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_r31cd")
+sprite = NodePath("../AnimatedSprite2D")
 
-[node name="FlashComponent" type="Node" parent="."]
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_8ot7q")
+sprite = NodePath("../AnimatedSprite2D")
 
-[node name="ShakeComponent" type="Node" parent="."]
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("5_tc33o")
+node = NodePath("../AnimatedSprite2D")
