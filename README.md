@@ -1,6 +1,6 @@
 # Galaxy Defiance
 
-# fixed errors that caused project to fail on Godot 4.2 and a few misc warnings.
+Fixed errors that caused project to fail on Godot 4.2 and a few misc warnings.
 
 This is my personal repo as I follow the Heartbeast tutorial for Galaxy Defiance.
 
