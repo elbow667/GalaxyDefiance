@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://qirfo0351vm4"]
+
+[ext_resource type="Texture2D" uid="uid://d1kpt6wh31jyh" path="res://assets/explosion.png" id="1_605o1"]
+[ext_resource type="Script" path="res://components/onetime_animated_effect.gd" id="1_w6g24"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0phdc"]
+atlas = ExtResource("1_605o1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d2cu"]
+atlas = ExtResource("1_605o1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duixu"]
+atlas = ExtResource("1_605o1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp3te"]
+atlas = ExtResource("1_605o1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vehii"]
+atlas = ExtResource("1_605o1")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnua8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0phdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duixu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp3te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vehii")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ExplosionEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dnua8")
+autoplay = "default"
+frame = 2
+frame_progress = 0.287642
+script = ExtResource("1_w6g24")
