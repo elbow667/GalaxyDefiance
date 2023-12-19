@@ -1,3 +1,4 @@
+class_name Enemy
 extends Node2D
 
 @onready var stats_component: = $StatsComponent as StatsComponent
@@ -9,7 +10,7 @@ extends Node2D
 @onready var hurtbox_component: = $HurtboxComponent as HurtboxComponent
 @onready var hitbox_component: = $HitboxComponent as HitboxComponent
 @onready var destroyed_component: = $DestroyedComponent as DestroyedComponent
-@onready var score_component: ScoreComponent = $ScoreComponent as ScoreComponent
+@onready var score_component: = $ScoreComponent as ScoreComponent
 
 func _ready() -> void:
 	stats_component.no_health.connect(func():

@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://ba2h6cq0wgujl"]
+
+[ext_resource type="PackedScene" uid="uid://b480tptubjo7e" path="res://Enemies/enemy.tscn" id="1_v7lwp"]
+[ext_resource type="Texture2D" uid="uid://byl5ql1acgghh" path="res://assets/pink_enemy.png" id="2_dah5s"]
+[ext_resource type="Script" path="res://Enemies/pink_enemy.gd" id="2_ixm2w"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="4_ne7dw"]
+[ext_resource type="Script" path="res://components/border_bounce_component.gd" id="5_pu1sw"]
+[ext_resource type="Script" path="res://components/timed_state_componoent.gd" id="6_6jwvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax6cr"]
+atlas = ExtResource("2_dah5s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtww7"]
+atlas = ExtResource("2_dah5s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfxgs"]
+atlas = ExtResource("2_dah5s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m7e5"]
+atlas = ExtResource("2_dah5s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0piep"]
+atlas = ExtResource("2_dah5s")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsofy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax6cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtww7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfxgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m7e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0piep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ybx1"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrg5s"]
+radius = 6.0
+
+[node name="PinkEnemy" instance=ExtResource("1_v7lwp")]
+script = ExtResource("2_ixm2w")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_vsofy")
+autoplay = "default"
+frame = 1
+frame_progress = 0.267148
+
+[node name="StatsComponent" parent="." index="1"]
+health = 6
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.6, 0.55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_6ybx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_wrg5s")
+
+[node name="ScoreComponent" parent="." index="12"]
+adjust_amount = 20
+
+[node name="States" type="Node" parent="." index="13"]
+
+[node name="MoveDownState" type="Node" parent="States" index="0"]
+unique_name_in_owner = true
+script = ExtResource("6_6jwvc")
+duration = 2.0
+
+[node name="MoveComponent" type="Node" parent="States/MoveDownState" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("4_ne7dw")
+actor = NodePath("../../..")
+velocity = Vector2(0, 15)
+
+[node name="MoveSideState" type="Node" parent="States" index="1"]
+unique_name_in_owner = true
+script = ExtResource("6_6jwvc")
+
+[node name="MoveSideComponent" type="Node" parent="States/MoveSideState" index="0" node_paths=PackedStringArray("actor")]
+unique_name_in_owner = true
+script = ExtResource("4_ne7dw")
+actor = NodePath("../../..")
+velocity = Vector2(20, 0)
+
+[node name="BorderBounceComponent" type="Node" parent="States/MoveSideState" index="1" node_paths=PackedStringArray("actor", "move_component")]
+script = ExtResource("5_pu1sw")
+actor = NodePath("../../..")
+move_component = NodePath("../MoveSideComponent")
+
+[node name="PauseState" type="Node" parent="States" index="2"]
+unique_name_in_owner = true
+script = ExtResource("6_6jwvc")
+duration = 3.0
