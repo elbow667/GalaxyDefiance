@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b480tptubjo7e"]
+[gd_scene load_steps=17 format=3 uid="uid://b480tptubjo7e"]
 
 [ext_resource type="Script" path="res://components/stats_component.gd" id="1_30xsv"]
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_byxdk"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="12_vci5g"]
 [ext_resource type="Script" path="res://components/score_component.gd" id="13_3unxy"]
 [ext_resource type="Resource" uid="uid://m7x3g1o840ot" path="res://game_stats.tres" id="14_hem5a"]
+[ext_resource type="AudioStream" uid="uid://d65gd3y3572" path="res://sounds/hit_sound.wav" id="15_q6q53"]
+[ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="16_m0llu"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_byxdk")
@@ -68,3 +70,9 @@ destroy_effect_spawner_component = NodePath("../SpawnerComponent")
 [node name="ScoreComponent" type="Node" parent="."]
 script = ExtResource("13_3unxy")
 game_stats = ExtResource("14_hem5a")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_q6q53")
+volume_db = 5.0
+bus = &"Sounds"
+script = ExtResource("16_m0llu")
